@@ -39,3 +39,119 @@ body {
 .tracking-caps {
   letter-spacing: 0.25em;
 }
+
+.section-padding {
+  @apply px-6 py-24 md:px-8 md:py-32;
+}
+
+.section-container {
+  @apply mx-auto max-w-6xl;
+}
+
+.nav-link {
+  @apply relative text-xs uppercase text-brand-dark/80 transition-colors duration-300 hover:text-brand-red;
+  letter-spacing: 0.25em;
+}
+
+.nav-link::after {
+  content: "";
+  @apply absolute -bottom-1 left-0 h-px w-0 bg-brand-red transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.decorative-line {
+  @apply mx-auto h-px w-16 bg-gradient-to-r from-transparent via-brand-red/50 to-transparent;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1 shadow-lg shadow-brand-red/10;
+}
+
+.input-field {
+  @apply w-full border border-brand-beige/25 bg-brand-dark/50 px-4 py-3.5 text-sm text-brand-cream placeholder:text-brand-cream/35 transition-all duration-200;
+}
+
+.input-field:focus {
+  @apply border-brand-red/60 bg-brand-dark/80 outline-none ring-2 ring-brand-red/20;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-float {
+    animation: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+}

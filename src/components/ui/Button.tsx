@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 type ButtonProps = {
   children: React.ReactNode;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "ghost";
   href?: string;
   className?: string;
   onClick?: () => void;
@@ -12,9 +12,11 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-brand-red text-white hover:bg-brand-red/90 border border-brand-red",
+    "bg-brand-red text-white border border-brand-red shadow-md shadow-brand-red/20 hover:bg-brand-red/90 hover:shadow-lg hover:shadow-brand-red/25 hover:-translate-y-0.5 active:translate-y-0",
   outline:
-    "bg-transparent text-brand-red border border-brand-red hover:bg-brand-red hover:text-white",
+    "bg-transparent text-brand-red border border-brand-red hover:bg-brand-red hover:text-white hover:-translate-y-0.5 active:translate-y-0",
+  ghost:
+    "bg-transparent text-brand-dark border border-transparent hover:text-brand-red",
 };
 
 export function Button({
@@ -26,7 +28,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-sm px-6 py-3 text-xs font-medium uppercase tracking-caps transition-colors duration-200",
+    "inline-flex items-center justify-center gap-2 rounded-none px-7 py-3.5 text-xs font-semibold uppercase tracking-caps transition-all duration-300",
     variants[variant],
     className,
   );
