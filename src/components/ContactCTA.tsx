@@ -7,6 +7,8 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Parallax } from "@/components/motion/Parallax";
 import { slideFromLeft, slideFromRight } from "@/lib/motion";
 
+const CONTACT_EMAIL = "brizokyla3@gmail.com";
+
 export function ContactCTA() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -22,7 +24,7 @@ export function ContactCTA() {
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\n${message}`,
     );
-    window.location.href = `mailto:hello@socialgrind.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
@@ -58,19 +60,19 @@ export function ContactCTA() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-beige/20 bg-brand-cream/5">
                   <Mail size={16} strokeWidth={1.25} className="text-brand-beige" />
                 </span>
-                hello@socialgrind.com
+                {CONTACT_EMAIL}
               </li>
               <li className="flex items-center gap-3 text-sm text-brand-cream/80">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-beige/20 bg-brand-cream/5">
                   <MapPin size={16} strokeWidth={1.25} className="text-brand-beige" />
                 </span>
-                Available worldwide — remote first
+                Available in Central Visayas
               </li>
             </ul>
 
             <div className="mt-10">
               <Button
-                href="mailto:hello@socialgrind.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 variant="outline"
                 className="border-brand-cream/50 text-brand-cream hover:border-brand-cream hover:bg-brand-cream hover:text-brand-dark"
               >
