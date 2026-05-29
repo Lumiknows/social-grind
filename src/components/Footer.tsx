@@ -16,6 +16,7 @@ const socialLinks = [
 ];
 
 const footerLinks = [
+  { href: "#founder", label: "Founder" },
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },

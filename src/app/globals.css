@@ -19,6 +19,7 @@
   --font-playfair: var(--font-playfair-display);
   --font-montserrat: var(--font-montserrat);
   --font-script: var(--font-great-vibes);
+  --font-display: var(--font-oswald);
 }
 
 html {
