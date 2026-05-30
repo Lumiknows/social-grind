@@ -28,6 +28,7 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://socialgrind.org"),
   title: "Social Grind | Social Media Agency",
   description:
     "Helping brands grow with strategy, content, and connection. Strategy. Content. Growth.",

@@ -1,8 +1,14 @@
-export type SocialPlatform = "facebook" | "instagram";
+export type SocialPlatform = "facebook" | "instagram" | "tiktok" | "website";
 
 export type SocialLink = {
   platform: SocialPlatform;
   url: string;
+};
+
+export type BrandBranch = {
+  name: string;
+  url: string;
+  avatar?: string;
 };
 
 export type Brand = {
@@ -14,11 +20,52 @@ export type Brand = {
   logoOnDark?: boolean;
   /** Short label shown on lettermark tiles when no logo asset exists. */
   monogram?: string;
+  /** Live website preview (iframe) when set. */
+  websiteUrl?: string;
   socials: SocialLink[];
+  branches?: BrandBranch[];
 };
 
-/** Past brand collaborations — social links only, no embeds. */
+/** Past brand collaborations — social links and optional live site previews. */
 export const brands: Brand[] = [
+  {
+    id: "uclick",
+    name: "UClick Self-Portrait Studio",
+    category: "Photography · Self-Portrait Studio",
+    logo: "/uclick.jpg",
+    socials: [
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/uclickstudio",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@uclickstudio",
+      },
+    ],
+    branches: [
+      {
+        name: "Cebu City",
+        url: "https://www.facebook.com/uclickstudiocebucity",
+        avatar: "/uclick-branches/cebu-city.svg",
+      },
+      {
+        name: "Liloan",
+        url: "https://www.facebook.com/uclickstudioliloan",
+        avatar: "/uclick-branches/liloan.svg",
+      },
+      {
+        name: "Lapu-Lapu",
+        url: "https://www.facebook.com/uclickstudiolapulapu",
+        avatar: "/uclick-branches/lapu-lapu.svg",
+      },
+      {
+        name: "Talisay",
+        url: "https://www.facebook.com/uclickstudio",
+        avatar: "/uclick-branches/talisay.svg",
+      },
+    ],
+  },
   {
     id: "hostel-honeycomb",
     name: "Hostel Honeycomb Cebu",
@@ -28,6 +75,14 @@ export const brands: Brand[] = [
       {
         platform: "facebook",
         url: "https://www.facebook.com/hostelhoneycomb/",
+      },
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/hostelhoneycombcebu",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@hostelhoneycomb",
       },
     ],
   },
@@ -57,6 +112,14 @@ export const brands: Brand[] = [
       {
         platform: "facebook",
         url: "https://www.facebook.com/profile.php?id=61561129515601",
+      },
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/playfaircebu",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@playfaircebu",
       },
     ],
   },
@@ -93,7 +156,15 @@ export const brands: Brand[] = [
     socials: [
       {
         platform: "facebook",
-        url: "https://www.facebook.com/profile.php?id=100087617970502",
+        url: "https://www.facebook.com/share/1QaKkV7NJ9/",
+      },
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/jayann_jewelry/",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@jayann.jewelry",
       },
     ],
   },
@@ -119,6 +190,14 @@ export const brands: Brand[] = [
       {
         platform: "facebook",
         url: "https://www.facebook.com/cars101cebu",
+      },
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/cars101_cebu/",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@cars101_cebu",
       },
     ],
   },

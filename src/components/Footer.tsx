@@ -75,8 +75,23 @@ export function Footer() {
           </div>
 
           <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-brand-beige/80 pt-8 sm:flex-row">
-            <p className="text-xs text-brand-dark/50">
-              &copy; {new Date().getFullYear()} Social Grind. All rights reserved.
+            <p className="text-center text-xs text-brand-dark/50 sm:text-left">
+              &copy; {new Date().getFullYear()} Social Grind. All rights
+              reserved.
+              <span className="mx-1.5 hidden text-brand-dark/30 sm:inline">
+                ·
+              </span>
+              <span className="mt-1 block sm:mt-0 sm:inline">
+                Site by{" "}
+                <a
+                  href="https://neilandre.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-dark/60 underline decoration-brand-beige underline-offset-2 transition-colors hover:text-brand-red hover:decoration-brand-red/40"
+                >
+                  Neil Andre Ibona
+                </a>
+              </span>
             </p>
             <a
               href="#"

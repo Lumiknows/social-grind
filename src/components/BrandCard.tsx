@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ExternalLink, Globe } from "lucide-react";
+import { LiveSitePreview } from "@/components/LiveSitePreview";
 import type { Brand } from "@/data/brands";
 import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/SocialIcons";
 
 type BrandCardProps = {
   brand: Brand;
@@ -15,11 +17,80 @@ type BrandCardProps = {
 const platformMeta = {
   facebook: { label: "Facebook", Icon: FacebookIcon },
   instagram: { label: "Instagram", Icon: InstagramIcon },
+  tiktok: { label: "TikTok", Icon: TikTokIcon },
+  website: { label: "Visit site", Icon: Globe },
 } as const;
+
+function BranchStrip({ brand }: { brand: Brand }) {
+  if (!brand.branches?.length) return null;
+
+  return (
+    <div className="grid grid-cols-2 gap-1.5">
+      {brand.branches.map((branch) => (
+        <a
+          key={branch.url}
+          href={branch.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-w-0 items-center gap-1.5 rounded-sm border border-brand-beige/70 bg-white/80 px-1.5 py-1 text-[9px] font-semibold uppercase tracking-caps text-brand-dark/70 transition-colors hover:border-brand-red/30 hover:bg-brand-red hover:text-white"
+          aria-label={`${brand.name} — ${branch.name} on Facebook`}
+        >
+          {branch.avatar ? (
+            <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full border border-brand-beige/60">
+              <Image
+                src={branch.avatar}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="20px"
+              />
+            </span>
+          ) : null}
+          <span className="truncate">{branch.name}</span>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export function BrandCard({ brand, index }: BrandCardProps) {
   const reduced = useReducedMotion();
   const hasSocials = brand.socials.length > 0;
+  const hasLivePreview = Boolean(brand.websiteUrl);
+
+  if (hasLivePreview && brand.websiteUrl) {
+    return (
+      <motion.article
+        className="col-span-2 flex flex-col sm:col-span-3 lg:col-span-4"
+        initial={reduced ? false : { opacity: 0, y: 24 }}
+        whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.5, delay: index * 0.04 }}
+      >
+        <LiveSitePreview url={brand.websiteUrl} name={brand.name} />
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h3 className="font-playfair text-lg font-semibold text-brand-red md:text-xl">
+              {brand.name}
+            </h3>
+            <p className="mt-1 text-[10px] uppercase tracking-caps text-brand-dark/45">
+              {brand.category}
+            </p>
+          </div>
+          <a
+            href={brand.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 self-start border border-brand-red/25 px-4 py-2.5 text-xs font-semibold uppercase tracking-caps text-brand-red transition-all hover:border-brand-red hover:bg-brand-red hover:text-white sm:self-auto"
+          >
+            <Globe className="h-3.5 w-3.5" aria-hidden />
+            Visit live site
+            <ExternalLink className="h-3 w-3 opacity-60" aria-hidden />
+          </a>
+        </div>
+      </motion.article>
+    );
+  }
 
   return (
     <motion.article
@@ -108,6 +179,8 @@ export function BrandCard({ brand, index }: BrandCardProps) {
             })}
           </div>
         )}
+
+        <BranchStrip brand={brand} />
       </div>
     </motion.article>
   );

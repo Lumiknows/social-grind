@@ -28,9 +28,9 @@ export function Portfolio() {
         <div className="section-container">
           <ScrollReveal>
             <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-brand-dark/65">
-              Past collaborations we&apos;ve supported across hospitality, food,
-              entertainment, and lifestyle — explore their social channels
-              below.
+              Past collaborations we&apos;ve supported across web, hospitality,
+              food, entertainment, and lifestyle — explore live sites and
+              social channels below.
             </p>
           </ScrollReveal>
 
